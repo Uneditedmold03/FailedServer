@@ -14,8 +14,7 @@ import jakarta.servlet.http.*;
 
 @WebServlet(name = "paymentservlet", value = "/payment-servlet")
 
-public class Paymentservlet {
-
+public class Paymentservlet extends HttpServlet {
     String sql = "INSERT INTO payments (title, date, description, category, price) VALUES (?, ?, ?, ?, ?)";
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

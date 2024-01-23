@@ -11,14 +11,11 @@ public class DataConnection {
 
     public static Connection getConnection() {
         if (connection == null) {
-            synchronized (DataConnection.class) { // Och här
-                if (connection == null) {
-                    // create your connection here
-                    Serverconnection serverConnection = new Serverconnection();
-                    connection = serverConnection.connect();
-                }
-            }
+            // create your connection here
+            Serverconnection serverConnection = new Serverconnection();
+            connection = serverConnection.connect();
         }
         return connection;
+
     }
 }

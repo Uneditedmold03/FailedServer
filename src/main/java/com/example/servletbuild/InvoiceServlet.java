@@ -2,11 +2,12 @@ package com.example.servletbuild;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import javax.servlet.*;
-import javax.servlet.http.HttpServlet;
+//import javax.servlet.http.HttpServlet;
 //import javax.servlet.http.HttpServletRequest;
 //import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -17,14 +18,14 @@ import java.sql.*;
 
 
 @WebServlet(name = "invoiceservlet", value = "/invoice-servlet")
-public class InvoiceServlet {
+public class InvoiceServlet extends HttpServlet {
     Connection connection = DataConnection.getConnection();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PrintWriter out = response.getWriter();
         try {
             Statement stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM company");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM payments");
 
             while (rs.next()) {
                 String title = rs.getString("title");
